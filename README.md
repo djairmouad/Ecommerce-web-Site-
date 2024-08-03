@@ -1,6 +1,4 @@
-Here's the updated README with instructions on setting up the MySQL database using XAMPP and the `ecommerce.sql` file:
 
----
 
 # Ecommerce Website
 
