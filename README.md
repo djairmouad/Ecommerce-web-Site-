@@ -1,6 +1,10 @@
 
 
 # Ecommerce Website
+## accounts:
+**Admin:admin@gmail.com** 
+**password:admin@**
+**USER**:YOU CAN CREAT ONE
 
 ## 🛠️ **Technologies Used**:
 - **Frontend**: React, Tailwind CSS, Redux, React Router, and other libraries.
