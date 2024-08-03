@@ -4,7 +4,6 @@
 - **Backend**: Node.js, Express.js.
 - **Database**: MySQL.
 
-# 🎉 Project Announcement: Full-Stack Ecommerce Website
 
 ## 📌 Project Overview:
 I've successfully built a comprehensive Ecommerce web application with robust features for both admin and user roles.
