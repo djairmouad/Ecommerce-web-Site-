@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { categoriesAction } from "../../store/categories";
 import Modal from "./UI/Modal";
 import EditProperty from "./EditeProperty";
-
+import { motion } from "framer-motion";
 
 export default function EditCategories({title,id,heandelClose}){
   
@@ -60,7 +60,7 @@ export default function EditCategories({title,id,heandelClose}){
     return <>
     {errorCategory && <p>Error</p>}
     <h1>{title}</h1>
-    <button id="addProperty" onClick={()=>handelAddProperty("open")}>ADD Property</button>
+    <motion.button whileHover={{scale:1.1}}  id="addProperty" onClick={()=>handelAddProperty("open")}>ADD Property</motion.button>
     <Modal open={showProperty} onClose={()=>handelAddProperty("remove")}>
       {showProperty && <EditProperty handelClose={()=>handelAddProperty("remove")} id={id}/> }
     </Modal>
@@ -76,8 +76,8 @@ export default function EditCategories({title,id,heandelClose}){
     </div>
     </div>
       <div id="info-2">
-      <button onClick={()=>heandelClose()}>Close</button>
-      <button disabled={isPending }>{isPending?"Editing...":"Edit"}</button>
+      <motion.button whileHover={{scale:1.1}}  onClick={()=>heandelClose()}>Close</motion.button>
+      <motion.button whileHover={{scale:1.1}}  disabled={isPending }>{isPending?"Editing...":"Edit"}</motion.button>
      </div>
     </form>
     {GetAllProperty?.data.length>0 && <h1>Propertys</h1> } 
@@ -88,9 +88,9 @@ export default function EditCategories({title,id,heandelClose}){
         <div  key={item.id}>
       <form id="formProperty">
         <input id="name" name="name" defaultValue={item.name}/>
-        <input id="description" name="description" defaultValue={item.descriptions}/>
+        <input style={{width:"fit-content"}} id="description" name="description" defaultValue={item.descriptions}/>
         <div>
-        <button type="button" onClick={()=>HandelDelete(item.name)}>Delete</button>
+        <motion.button whileHover={{scale:1.1}}  type="motion.button" onClick={()=>HandelDelete(item.name)}>Delete</motion.button>
         </div>
         </form>
         </div>

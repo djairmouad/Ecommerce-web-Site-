@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import {SaveProperty, queryClient} from "../util/http";
+import { motion } from "framer-motion";
 export default function EditProperty({handelClose,id}){
     const {mutate,isLoading,isError}=useMutation({
         mutationFn:SaveProperty,
@@ -29,8 +30,8 @@ export default function EditProperty({handelClose,id}){
         <input id="description" name="description" required/>
         </div>
         <div id="info">
-        <button onClick={()=>handelClose()}>Close</button>
-        <button disabled={isLoading}>{isLoading?"Submiting..":"Save"}</button>
+        <motion.button whileHover={{scale:1.1}}  onClick={()=>handelClose()}>Close</motion.button>
+        <motion.button whileHover={{scale:1.1}}  disabled={isLoading}>{isLoading?"Submiting..":"Save"}</motion.button>
         </div>
     </form>
 }

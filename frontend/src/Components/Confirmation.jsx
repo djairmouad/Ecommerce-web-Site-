@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { queryClient } from "../util/http";
-
+import {motion} from "framer-motion"
 
 export default function Confirmation({title,message,heandelClose,onDelete,type}){
    const {mutate,isPending}=useMutation({
@@ -19,8 +19,10 @@ export default function Confirmation({title,message,heandelClose,onDelete,type})
         <h1>{title}</h1>
         <h2>{message}</h2>
         <div id="info">
-          <button onClick={()=>heandelClose("remove")}>Close</button>
-          <button onClick={handelDelete} disabled={isPending}>{isPending?"Deleteing...":"OK"}</button>
+          <motion.button whileHover={{scale:1.1}} 
+          onClick={()=>heandelClose("remove")}>Close</motion.button>
+          <motion.button whileHover={{scale:1.1}}
+          onClick={handelDelete} disabled={isPending}>{isPending?"Deleteing...":"OK"}</motion.button>
         </div>
         </div>
 }

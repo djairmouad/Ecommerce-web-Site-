@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import fetchProducts, { fetchProductShow, updatePage } from "../util/http"
 import { useEffect, useRef, useState } from "react";
-
+import { motion } from "framer-motion";
 
 export default function Settings(){
    const select=useRef();
@@ -38,7 +38,7 @@ export default function Settings(){
             return <option key={item.id} value={item.id}>{item.name}</option>
          })}
          </select>
-         <button className=" w-1/3 ml-3 h-8  bg-black text-white" onClick={handelUpdatePage}>Edite</button>
+         <motion.button whileHover={{scale:1.1}}  className=" w-1/3 ml-3 h-8  bg-black text-white" onClick={handelUpdatePage}>Edite</motion.button>
         </div>
     </div>
 }

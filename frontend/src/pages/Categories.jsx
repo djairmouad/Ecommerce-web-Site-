@@ -9,7 +9,7 @@ import { DeleteData, SaveCategories, fetchCategories} from "../util/http"
 import IsLoading from "../Components/UI/IsLoading"
 import { json } from "react-router-dom"
 import { queryClient } from "../util/http"
-
+import {motion} from "framer-motion"
 export default function Categories(){
     const {show,Delete,showId}=useSelector((state)=>state.categorie);
     const {data,isLoading,isError}=useQuery({
@@ -56,7 +56,7 @@ export default function Categories(){
      <input type="text" name="name" placeholder="Name"/>
      <input type="text" name="description" placeholder="Description"/>
      </div>
-      {errorSave?"can't save Categories":<button disabled={isPending} className="bg-[var(--third-color)] border-none p-2.5 px-12 text-white" >{isPending?"Saving...":"Save"}</button>}
+      {errorSave?"can't save Categories":<motion.button whileHover={{scale:1.1}} disabled={isPending} className="bg-[var(--third-color)] border-none p-2.5 px-12 text-white" >{isPending?"Saving...":"Save"}</motion.button>}
       </form>
       <TableProducts 
       title={["PRODUCTS NAME"]}  

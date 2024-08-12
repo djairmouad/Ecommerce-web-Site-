@@ -3,8 +3,7 @@ import { DeletePropertyFromProdcut, fetchCategories, fetchImages, fetchProduct, 
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-regular-svg-icons'; //
-
-
+import {motion} from "framer-motion"
 export default function EditProducts({ title, id, heandelClose, newProduct, method }) {
   const [currentFile, setFile] = useState(null);
   const [prop,setProp]=useState({
@@ -85,29 +84,73 @@ export default function EditProducts({ title, id, heandelClose, newProduct, meth
          
         <div id="info-product-image" style={{marginTop: "10px",gap:"10px"}}>
         <label htmlFor="imageProduct">Images:</label>
-        {imageLength===0 ? null :(images.map((item) => (
-            <div key={item.id} id="image">
-            <img  src={`http://localhost:5000/image/${item.name}`} alt={item.name} />
-            <button onClick={()=>handelDelete(item.id)}>Delete</button>
-            <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000">
-  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-  <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-  <g id="SVGRepo_iconCarrier">
-    <path d="M10 11V17" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-    <path d="M14 11V17" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-    <path d="M4 7H20" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-    <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-    <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-  </g>
-</svg>
+        {imageLength === 0 ? null : (
+  <motion.div
+  style={{display:"flex",gap:"5px"}}
+    variants={{
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.5,
+        },
+      },
+    }}
+    initial="hidden"
+    animate="visible"
+  >
+    {images.map((item) => (
+      <motion.div
+        
+        key={item.id}
+        id="image"
+        variants={{
+          hidden: { opacity: 0, scale: 0.5 },
+          visible: { opacity: 1, scale: 1 },
+        }}
+      >
+        <motion.img
+          variants={{
+            hidden: { opacity: 0, scale: 0.5 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          src={`http://localhost:5000/image/${item.name}`}
+          alt={item.name}
+        />
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          onClick={() => handelDelete(item.id)}
+        >
+          Delete
+        </motion.button>
+        <motion.svg
+        whileHover={{scale:1.1}}
+          width="64px"
+          height="64px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          stroke="#ff0000"
+        >
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M10 11V17" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+            <path d="M14 11V17" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+            <path d="M4 7H20" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+            <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+            <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+          </g>
+        </motion.svg>
+      </motion.div>
+    ))}
+  </motion.div>
+)}
 
-
-            </div>
-          )))}
-          {imageLength<3 ? <div id="upload">
+          {imageLength<3 ? <motion.div whileHover={{scale:1.1}} id="upload">
             <FontAwesomeIcon id="icon" icon={faImage} />
             <input type="file" name="imageProduct" id="imageProduct" onChange={handleFileChange} />
-          </div>:null
+          </motion.div>:null
           }
         </div>
       
@@ -141,12 +184,13 @@ export default function EditProducts({ title, id, heandelClose, newProduct, meth
               defaultValue={ele.description}
               disabled
             />
-     <button type="button" style={{backgroundColor: "var(--delete-color)",
+     <motion.button whileHover={{scale:1.1}} 
+     type="button" style={{backgroundColor: "var(--delete-color)",
     border: "none",
     fontWeight: "600",
     height: "97%",
     marginLeft: "5px",
-    color: "var(--delete-text-color)"}} onClick={()=>handelDeletProperity(ele.id)}>DELETE</button>
+    color: "var(--delete-text-color)"}} onClick={()=>handelDeletProperity(ele.id)}>DELETE</motion.button>
             </div>
           );
         })}
@@ -163,10 +207,14 @@ export default function EditProducts({ title, id, heandelClose, newProduct, meth
           </select>
         </div>
         <div id="info-product">
-          <button type="button" onClick={heandelClose}>Close</button>
-          <button type="submit">
+          <motion.button 
+          whileHover={{scale:1.1}}
+          type="button" onClick={heandelClose}>Close</motion.button>
+          <motion.button 
+          whileHover={{scale:1.1}}
+          type="submit">
             {submitting ? 'Submitting...' : newProduct ? 'Create' : 'Edit'}
-          </button>
+          </motion.button>
         </div>
       </form>
     </div>

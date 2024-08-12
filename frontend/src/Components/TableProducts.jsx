@@ -1,5 +1,5 @@
 
-
+import {motion} from "framer-motion"
 export default function TableProducts({DUMMyPRODUCT,title,heandelEdite,heandelDelete }){
     const NewDUMMyPRODUCT=[...DUMMyPRODUCT];
     return <div id="table">
@@ -16,8 +16,12 @@ export default function TableProducts({DUMMyPRODUCT,title,heandelEdite,heandelDe
         <p>{item.stock_quantity}</p>
         </div>
           <div id="Button" style={{ display: 'flex', alignItems: 'center', gap: '25px' }} >
-          <button onClick={()=>heandelEdite("open",item.id)}  style={{ width: '90px', height: '30px', outline: 'none', fontWeight: 600 ,backgroundColor: 'white', border: 'none', boxShadow: '0px 0px 4px 0px var(--text-color)'}}>Edit</button>
-          <button onClick={()=>heandelDelete("open",item.id)}  style={{ width: '90px', height: '30px', outline: 'none', fontWeight: 600, backgroundColor: '#ffc2c2', color: '#d3414e', border: 'none', boxShadow: '0px 0px 4px 0px var(--text-color)' }}>Delete</button>
+          <motion.button
+          whileHover={{scale:1.1}}
+           onClick={()=>heandelEdite("open",item.id)}  style={{ width: '90px', height: '30px', outline: 'none', fontWeight: 600 ,backgroundColor: 'white', border: 'none', boxShadow: '0px 0px 4px 0px var(--text-color)'}}>Edit</motion.button>
+          <motion.button
+          whileHover={{scale:1.1}}
+           onClick={()=>heandelDelete("open",item.id)}  style={{ width: '90px', height: '30px', outline: 'none', fontWeight: 600, backgroundColor: '#ffc2c2', color: '#d3414e', border: 'none', boxShadow: '0px 0px 4px 0px var(--text-color)' }}>Delete</motion.button>
           </div>
         </div>)
         )}

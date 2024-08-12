@@ -7,6 +7,7 @@ import { productAction } from "../../store/product.Redux"
 import Confirmation from "../Components/Confirmation"
 import { useQuery } from "@tanstack/react-query"
 import fetchProducts, { DeleteData, queryClient } from "../util/http"
+import { AnimatePresence,motion, spring } from "framer-motion"
 
 
 
@@ -43,19 +44,23 @@ export default function Products(){
      const products=data?.data ;
     return <>
         <div id="products">
-    <button onClick={()=>heandelNew("open")} className="bg-[var(--third-color)] border-none p-2.5 px-12 text-white">Add new Product</button>
+    <motion.button 
+     whileHover={{scale:1.1}}
+     transition={{type:"spring" ,stiffness:500}}
+    onClick={()=>heandelNew("open")} className="bg-[var(--third-color)] border-none p-2.5 px-12 text-white">Add new Product</motion.button>
     {products && <TableProducts 
     title={["PRODUCTS NAME","Price","Stock Quantity"]} 
     DUMMyPRODUCT={[...products]} 
     heandelEdite={heandelEdite}
     heandelDelete={heandelDelete}
     />}
-
-    <Modal  open={show || newShow || showConfi} onClose={show ? ()=>heandelEdite("remove") : newShow ? ()=>heandelNew("remove"): ()=>heandelDelete("remove")}>
-    {show && <EditProducts method="PUT" title="FORM EDIT" id={showId} heandelClose={()=>heandelEdite("remove")}  />}
-    {newShow && <EditProducts method="POST" title="NEW PRODUCT" newProduct heandelClose={()=>heandelNew("remove")}/>}
-    {showConfi && <Confirmation type="products" onDelete={onDelete} title="Confirmation" message="Are you sure To delete that?" heandelClose={heandelDelete}/>}
+   <AnimatePresence>
+    <Modal key="modale"  open={show || newShow || showConfi} onClose={show ? ()=>heandelEdite("remove") : newShow ? ()=>heandelNew("remove"): ()=>heandelDelete("remove")}>
+    {show && <EditProducts key="editProducts" method="PUT" title="FORM EDIT" id={showId} heandelClose={()=>heandelEdite("remove")}  />}
+    {newShow && <EditProducts key="newProducts" method="POST" title="NEW PRODUCT" newProduct heandelClose={()=>heandelNew("remove")}/>}
+    {showConfi && <Confirmation key="confirmation" type="products" onDelete={onDelete} title="Confirmation" message="Are you sure To delete that?" heandelClose={heandelDelete}/>}
     </Modal>
+    </AnimatePresence>
     </div>
     </>
 }

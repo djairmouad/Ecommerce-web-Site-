@@ -6,7 +6,7 @@ import { DeleteData, fetchAllAdmins, queryClient, saveAdmin } from "../util/http
 import { useMutation, useQuery } from "@tanstack/react-query";
 import IsLoading from "../Components/UI/IsLoading";
 import { useRef, useState } from "react";
-
+import { motion } from "framer-motion";
 export default function Admins(){
     const email=useRef();
     const password=useRef();
@@ -65,7 +65,7 @@ export default function Admins(){
      <input type="text" ref={password} name="confirm" placeholder="Confirm Password" style={{width:"100%"}}/>
      </div>
      </div>
-     <button style={buttonStyle} disabled={isPending && true}> {isPending?"Submiting...":"Save"}</button>
+     <motion.button whileHover={{scale:1.1}}  style={buttonStyle} disabled={isPending && true}> {isPending?"Submiting...":"Save"}</motion.button>
       </form>
     <h3>Existing admins</h3>
     <h4>ADMIN GOOGLE EMAIL</h4>
@@ -75,7 +75,7 @@ export default function Admins(){
         {AllAdmins.map((item) => (
                <tr key={item.id}>
                             <td>{item.email}</td>
-                            <td><button onClick={() => handelDelete("open", item.id)}>Delete</button></td>
+                            <td><motion.button whileHover={{scale:1.1}}  onClick={() => handelDelete("open", item.id)}>Delete</motion.button></td>
                         </tr>
                     ))}
         </tbody>
