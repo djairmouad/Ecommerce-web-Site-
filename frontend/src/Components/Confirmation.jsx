@@ -15,10 +15,10 @@ export default function Confirmation({title,message,heandelClose,onDelete,type})
    function handelDelete(){
     mutate();
    }
-    return <div id="confirmation" >
-        <h1>{title}</h1>
-        <h2>{message}</h2>
-        <div id="info">
+    return <div id="confirmation" className=" p-3 flex flex-col">
+        <h1 className=" text-2xl   font-medium">{title}</h1>
+        <h2 className=" text-base    font-medium">{message}</h2>
+        <div id="info" className=" p-3 w-full">
           <motion.button whileHover={{scale:1.1}} 
           onClick={()=>heandelClose("remove")}>Close</motion.button>
           <motion.button whileHover={{scale:1.1}}

@@ -74,12 +74,12 @@ export default function EditProducts({ title, id, heandelClose, newProduct, meth
   if (!data) return <p>No Data</p>;
   console.log(prop);
   return (
-    <div id="form-product">
-      <h1>{title}</h1>
+    <div id="form-product" className=" p-3">
+      <h1 className=" text-2xl font-bold">{title}</h1>
       <form onSubmit={handleSubmit}   encType="multipart/form-data"  style={{ width: "400px",gap:"10px", height: "500px",paddingBottom:"20px",paddingTop:"20px" }}>
         <div id="info-product">
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" defaultValue={product.name} />
+          <input type="text" className=" border pl-1 border-black rounded-sm " id="name" name="name" defaultValue={product.name} />
         </div>
          
         <div id="info-product-image" style={{marginTop: "10px",gap:"10px"}}>
@@ -156,15 +156,15 @@ export default function EditProducts({ title, id, heandelClose, newProduct, meth
       
         <div id="info-product">
           <label htmlFor="description">Description:</label>
-          <textarea type="text" style={{height:"100px"}} id="description" name="description">{product.description}</textarea>
+          <textarea type="text" className=" border pl-1 border-black rounded-sm " style={{height:"100px"}} id="description" name="description">{product.description}</textarea>
         </div>
         <div id="info-product">
           <label htmlFor="price">Price:</label>
-          <input type="number" id="price" name="price" defaultValue={product.price} />
+          <input type="number" className=" border pl-1 border-black rounded-sm " id="price" name="price" defaultValue={product.price} />
         </div>
         <div id="info-product">
           <label htmlFor="stock_quantity">Stock Quantity:</label>
-          <input type="number" id="stock_quantity" name="stock_quantity" defaultValue={product.stock_quantity} />
+          <input type="number" className=" border pl-1 border-black rounded-sm " id="stock_quantity" name="stock_quantity" defaultValue={product.stock_quantity} />
         </div>
         <div id="info-product">
         {prop.AllProp.map((item, index) => {
@@ -177,6 +177,7 @@ export default function EditProducts({ title, id, heandelClose, newProduct, meth
           return (
             <div key={ele.id} style={{marginBottom: "10px"}}>
             <input
+            className=" border pl-1 border-black rounded-sm "
               style={{width: "40%"}}
               type="text"
               id={name}
@@ -201,7 +202,7 @@ export default function EditProducts({ title, id, heandelClose, newProduct, meth
         </div>
         <div id="info-product">
           <label htmlFor="category-product">Category:</label>
-          <select id="category-product" name="category_id" defaultValue={product.category_id}>
+          <select id="category-product" className=" border pl-1 border-black rounded-sm " name="category_id" defaultValue={product.category_id}>
            {options.map((opt)=><option key={opt.id} value={opt.id}>{opt.name}</option>
            )}
           </select>

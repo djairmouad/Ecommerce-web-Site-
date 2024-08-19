@@ -12,7 +12,7 @@ const DUMMYINFO_Seconde=[
 export default function Dashboard(){
 
     return(
-        <div id="content-dashboard" className="font-cursive w-full">
+        <div id="content-dashboard" className="font-cursive w-full ">
         <CartsDashboard title="Orders" DUMMYINFO={[...DUMMYINFO_frirst]}/>
         <CartsDashboard title="Revenue" price DUMMYINFO={[...DUMMYINFO_Seconde]}/>
         </div>

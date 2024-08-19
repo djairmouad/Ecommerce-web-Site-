@@ -14,10 +14,10 @@ export default function SideBar(){
   }
 return <>
   {token && <main>
-  <nav>
+  <nav className="mt-8 ">
     <Side/>
   </nav>
-  <section>
+  <section className="mt-8 ">
     <Wellcome name={`${first_name}  ${last_name}`}/>
     <Outlet/>
   </section>

@@ -57,10 +57,10 @@ export default function EditCategories({title,id,heandelClose}){
     return  <p>error</p>
   }
    const categorie=data?.data[0] || {}
-    return <>
+    return <div className=" p-2  rounded-sm">
     {errorCategory && <p>Error</p>}
-    <h1>{title}</h1>
-    <motion.button whileHover={{scale:1.1}}  id="addProperty" onClick={()=>handelAddProperty("open")}>ADD Property</motion.button>
+    <h1 className=" text-2xl font-bold">{title}</h1>
+    <motion.button className=" p-1" whileHover={{scale:1.1}}  id="addProperty" onClick={()=>handelAddProperty("open")}>ADD Property</motion.button>
     <Modal open={showProperty} onClose={()=>handelAddProperty("remove")}>
       {showProperty && <EditProperty handelClose={()=>handelAddProperty("remove")} id={id}/> }
     </Modal>
@@ -68,11 +68,11 @@ export default function EditCategories({title,id,heandelClose}){
     <div id="info-1" >
     <div id="info" >
      <label htmlFor="name">name:</label>
-     <input type="text" id="name" name="name" defaultValue={categorie.name} />
+     <input className=" border text-sm  pl-1 border-black rounded-sm " type="text" id="name" name="name" defaultValue={categorie.name} />
     </div>
     <div id="info">
      <label htmlFor="description">Description:</label>
-     <input type="text" id="description" name="description" defaultValue={categorie.description} />
+     <input className=" border text-sm pl-1 border-black rounded-sm " type="text" id="description" name="description" defaultValue={categorie.description} />
     </div>
     </div>
       <div id="info-2">
@@ -80,20 +80,20 @@ export default function EditCategories({title,id,heandelClose}){
       <motion.button whileHover={{scale:1.1}}  disabled={isPending }>{isPending?"Editing...":"Edit"}</motion.button>
      </div>
     </form>
-    {GetAllProperty?.data.length>0 && <h1>Propertys</h1> } 
+    {GetAllProperty?.data.length>0 && <h1 className=" text-2xl font-bold">Propertys</h1> } 
     {PropertyLoading ? (
 
     <IsLoading/>) :(
       GetAllProperty?.data.map((item)=>(
         <div  key={item.id}>
       <form id="formProperty">
-        <input id="name" name="name" defaultValue={item.name}/>
-        <input style={{width:"fit-content"}} id="description" name="description" defaultValue={item.descriptions}/>
+        <input className=" border pl-1 border-black rounded-sm " id="name" name="name" defaultValue={item.name}/>
+        <input className=" border pl-1 border-black rounded-sm " style={{width:"fit-content"}} id="description" name="description" defaultValue={item.descriptions}/>
         <div>
         <motion.button whileHover={{scale:1.1}}  type="motion.button" onClick={()=>HandelDelete(item.name)}>Delete</motion.button>
         </div>
         </form>
         </div>
     )))}
-    </>
+    </div>
 }

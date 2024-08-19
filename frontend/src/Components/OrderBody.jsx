@@ -27,8 +27,8 @@ export default function OrderBody({info}){
     </td>
     <td style={{borderBottom: "1px solid"}}>{
         Orders?.data?.map((item)=>{
-        return<div key={item.id} style={{display:"flex", flexDirection:"row", border:"none"}}>
-        <p className="">{`${item.quantity}x `}</p>
+        return<div key={item.id} style={{display:"flex", justifyContent:"flex-start" ,flexDirection:"row", border:"none"}}>
+        <p className=" text-sm font-normal">{`${item.quantity}x `}</p>
         <p>{` ${product?.filter(ele=> +ele.id === +item.product_id).map(event=>event.name)}`}</p>
         </div>
         

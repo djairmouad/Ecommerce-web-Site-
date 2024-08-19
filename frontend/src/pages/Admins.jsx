@@ -53,28 +53,28 @@ export default function Admins(){
         color: 'white',
         border: 'none'
       };
-    return <div id="Admins">
-    <h1>Admins</h1>
+    return <div id="Admins" className=" pt-7">
+    <h1 className=" text-2xl font-bold">Admins</h1>
     <form onSubmit={handelSave}>
      <div id="newCategories">
-     <p>Creat a new Admin</p>
-     <input type="text" ref={email} name="email" placeholder="Email"  style={{width:"34%"}}/>
+     <p className=" text-xl font-normal ">Creat a new Admin</p>
+     <input className=" border text-sm  pl-1 border-black rounded-sm h-7  " type="text" ref={email} name="email" placeholder="Email"  style={{width:"34%"}}/>
      <div style={{display:"flex",flexDirection:"column",width:"34%"}}>
-     <input type="text" ref={password} name="password" placeholder="Password" style={{width:"100%"}}/>
+     <input className=" border text-sm  pl-1 border-black rounded-sm h-7  " type="text" ref={password} name="password" placeholder="Password" style={{width:"100%"}}/>
      {conf && <p style={{color:"red"}}>confirm password!!!</p>}
-     <input type="text" ref={password} name="confirm" placeholder="Confirm Password" style={{width:"100%"}}/>
+     <input className=" border text-sm  pl-1 border-black rounded-sm h-7  " type="text" ref={password} name="confirm" placeholder="Confirm Password" style={{width:"100%"}}/>
      </div>
      </div>
      <motion.button whileHover={{scale:1.1}}  style={buttonStyle} disabled={isPending && true}> {isPending?"Submiting...":"Save"}</motion.button>
       </form>
-    <h3>Existing admins</h3>
+    <h3 className=" text-xl font-bold mt-5 w-4/5">Existing admins</h3>
     <h4>ADMIN GOOGLE EMAIL</h4>
     {isLoading && <IsLoading/>}
     <table>
         <tbody>
         {AllAdmins.map((item) => (
                <tr key={item.id}>
-                            <td>{item.email}</td>
+                            <td className=" pl-1">{item.email}</td>
                             <td><motion.button whileHover={{scale:1.1}}  onClick={() => handelDelete("open", item.id)}>Delete</motion.button></td>
                         </tr>
                     ))}

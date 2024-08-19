@@ -51,7 +51,7 @@ await localStorage.setItem("token", data.token);
 const type=data.user.type;
 console.log(type);
 if(type==="Admin"){
-    return redirect("/admin")
+    return redirect("/admin/dashboard")
 }else if(type==="User"){
     return redirect("/user/home")
 }

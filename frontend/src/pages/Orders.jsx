@@ -9,12 +9,12 @@ export default function Orders(){
 })
 console.log(orders);
 let allOrders=orders || []
-   return <div id="orders" style={{width:"80%"}}>
-    <h1>Orders</h1>
-    <div>
-    <h4>DATE </h4>
-    <h4>RECIPIENT</h4>
-    <h4>PRODUCTS</h4>
+   return <div id="orders" style={{width:"80%"}} className="pt-7 ">
+    <h1  className=" text-2xl font-bold mb-3">Orders</h1>
+    <div className=" border-2  border-b-0 border-black" style={{borderColor:"black", borderBottom:0}}>
+    <h4 className="text-base     font-medium ">DATE </h4>
+    <h4 className="text-base     font-medium ">RECIPIENT</h4>
+    <h4 className="text-base     font-medium ">PRODUCTS</h4>
     </div>
     <table>
         <tbody style={{border:"1px solid",position:"relative"}}>

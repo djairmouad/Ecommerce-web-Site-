@@ -43,8 +43,9 @@ export default function Products(){
        console.log(data);
      const products=data?.data ;
     return <>
-        <div id="products">
+        <div id="products" className=" pt-7">
     <motion.button 
+    className="mb-3"
      whileHover={{scale:1.1}}
      transition={{type:"spring" ,stiffness:500}}
     onClick={()=>heandelNew("open")} className="bg-[var(--third-color)] border-none p-2.5 px-12 text-white">Add new Product</motion.button>
